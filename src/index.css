@@ -1,0 +1,8 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-font-smoothing: antialiased; }
+body { font-family: 'Inter', sans-serif; background: #060000; color: #fff; overflow-x: hidden; min-height: 100vh; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+ul { list-style: none; }
+#root { max-width: 100%; margin: 0; padding: 0; text-align: left; }
