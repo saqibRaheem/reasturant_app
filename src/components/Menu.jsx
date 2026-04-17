@@ -1,214 +1,272 @@
-import { useState, useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Utensils, Flame, Star, Zap } from 'lucide-react';
+import { menuData, extras } from '../data/menuData';
+import { cn } from '../utils/cn';
+import Steam from './Steam';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger)
-
-const cheesesteaks = [
-  { emoji: '🥩', name: 'Steak N Cheese', desc: 'Seasoned juicy steak, Swiss/American cheese & mayo', price: '$9.99' },
-  { emoji: '🥩', name: 'Signature', desc: 'Juicy steak, Swiss/American cheese, grilled onions, bell peppers, mushroom & mayo', price: '$11.99', featured: true, badge: '⭐ House Special' },
-  { emoji: '🍖', name: 'Barbeque', desc: 'Juicy steak, American cheese, grilled onions, crispy onions, BBQ sauce', price: '$11.99' },
-  { emoji: '🌶️', name: 'Spicy Pepper', desc: 'Spicy steak, Swiss & American cheese, grilled jalapeños, bell peppers, banana peppers & mayo', price: '$11.99', spicy: true, badge: '🌶️ Spicy' },
-  { emoji: '🔥', name: 'Flaming Hot', desc: 'Spicy steak, American cheese, grilled jalapeños, Cheeto dust, hot sauce', price: '$11.99', fire: true, badge: '🔥 Extra Hot' },
-  { emoji: '🥦', name: 'Veggie', desc: 'Tator tots, Swiss/American cheese, grilled onions, bell peppers, mushroom & mayo', price: '$9.99' },
-]
-
-const sandwiches = [
-  { emoji: '🍗', name: 'OG Zinger', desc: 'Freshly hand battered chicken breast, magical house sauce, hot n sweet sauce, coleslaw & cheese', single: '$9.99', double: '$13.99', featured: true, badge: '⭐ Best Seller' },
-  { emoji: '🔥', name: 'Flamin Hot Zinger', desc: 'Hand battered chicken, house sauce, spicy sauce, jalapeños, Cheetos & coleslaw', single: '$9.99', double: '$13.99', fire: true, badge: '🔥 Extra Hot' },
-  { emoji: '🥓', name: 'BBQ Bacon Zinger', desc: 'Hand battered chicken, house sauce, coleslaw, beef brisket bacon, BBQ sauce & cheese', price: '$12.99' },
-]
-
-const burgers = [
-  { emoji: '🍔', name: 'OG Cheeseburger', desc: 'Seasoned beef patty, American cheese', single: '$9.99', double: '$13.99' },
-  { emoji: '🍄', name: 'Mushroom N Swiss', desc: 'Seasoned beef patty, Swiss cheese, grilled mushrooms', single: '$10.99', double: '$14.99' },
-  { emoji: '🏆', name: "Chef's Special", desc: 'Beef patty, Swiss cheese, grilled mushrooms, onions, jalapeños & mozzarella', single: '$9.99', double: '$13.99', featured: true, badge: "👨‍🍳 Chef's Special" },
-  { emoji: '🥓', name: 'BBQ Bacon Cheeseburger', desc: 'Seasoned beef patty, American cheese, bacon brisket & BBQ sauce', price: '$12.99' },
-  { emoji: '🤠', name: 'Texas Burger', desc: 'Beef patty, American cheese topped with Signature Philly CheeseSteaks', price: '$12.99', fire: true, badge: '🤠 Texas' },
-]
-
-const addons = [
-  ['Extra Veggies', '$0.99'],
-  ['Cheese Sauce', '$1.99'],
-  ['Mozzarella', '$1.99'],
-  ['American/Swiss', '$0.99'],
-  ['2 Slice Brisket', '$2.49'],
-]
-
-const sides = [
-  ['Seasoned Fries', '$2.99', '$4.49'],
-  ['Tater Tots', '$3.49', '$6.49'],
-  ['Onion Rings', '$3.49', '$6.49'],
-  ['Sweet Potato Fries', '$3.49', '$6.49'],
-  ['5PC Jalapeño Poppers', '$4.99', null],
-  ['Cheese Fries', '$4.49', '$7.99'],
-  ['Cheese Tots', '$4.99', '$8.49'],
-  ['Coleslaw', '$1.99', null],
-]
+gsap.registerPlugin(ScrollTrigger);
 
 function MenuCard({ item }) {
-  const cls = `menu-card${item.featured ? ' featured-card' : ''}${item.fire ? ' fire-card' : ''}${item.spicy ? ' spicy-card' : ''}`
   return (
-    <div className={cls}>
-      {item.badge && <div className={`mc-badge${item.fire ? ' fire' : ''}${item.spicy ? ' spicy' : ''}${item.badge?.includes('🤠') ? ' texas' : ''}`}>{item.badge}</div>}
-      <div className="mc-top">
-        <div className="mc-emoji">{item.emoji}</div>
-        <div className="mc-info">
-          <h3>{item.name}</h3>
-          <p>{item.desc}</p>
+    <motion.div
+      layout
+      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: true }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      whileHover={{ y: -10 }}
+      className={cn(
+        "group relative flex flex-col bg-brand-dark2 border border-white/5 rounded-3xl overflow-hidden transition-all duration-500",
+        item.featured && "border-brand-gold/30 bg-gradient-to-br from-brand-dark2 to-brand-gold/5 shadow-[0_10px_40px_rgba(232,160,32,0.1)]",
+        item.fire && "border-brand-red/30 bg-gradient-to-br from-brand-dark2 to-brand-red/5 shadow-[0_10px_40px_rgba(192,26,8,0.1)]"
+      )}
+    >
+      {/* Badge */}
+      {item.badge && (
+        <div className={cn(
+          "absolute top-5 left-5 z-20 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-xl",
+          item.fire ? "bg-brand-red text-white" : "bg-brand-gold text-brand-dark"
+        )}>
+          {item.badge}
         </div>
+      )}
+
+      {/* Image Area */}
+      <div className="relative h-64 overflow-hidden">
+        {item.fire && <Steam />}
+        <img 
+          src={item.image} 
+          alt={item.name}
+          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark2 via-transparent to-transparent opacity-60" />
+        
+        {/* Glow effect on hover */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-tr from-brand-red/20 to-transparent pointer-events-none" />
       </div>
-      <div className="mc-bottom">
-        {item.price
-          ? <span className="mc-price">{item.price}</span>
-          : <div className="price-duo">
-              <span>Single <strong>{item.single}</strong></span>
-              <span>Double <strong>{item.double}</strong></span>
+
+      {/* Content */}
+      <div className="p-6 flex flex-col flex-grow">
+        <div className="flex justify-between items-start mb-2">
+          <h3 className="font-oswald text-xl font-bold uppercase tracking-wide text-white group-hover:text-brand-red transition-colors">
+            {item.name}
+          </h3>
+          {item.price && (
+            <span className="font-oswald text-lg font-bold text-brand-gold">{item.price}</span>
+          )}
+        </div>
+        
+        <p className="font-inter text-sm text-white/50 leading-relaxed mb-6 flex-grow">
+          {item.desc}
+        </p>
+
+        {/* Pricing for Single/Double */}
+        {!item.price && (item.single || item.double) && (
+          <div className="mt-auto pt-4 border-t border-white/5 flex justify-between items-center text-xs">
+            <span className="text-white/40 uppercase tracking-widest font-bold">Options</span>
+            <div className="flex gap-4">
+              <div className="flex flex-col items-center">
+                <span className="text-[10px] text-white/30 uppercase">Single</span>
+                <span className="font-bold text-white">{item.single}</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <span className="text-[10px] text-white/30 uppercase">Double</span>
+                <span className="font-bold text-brand-gold">{item.double}</span>
+              </div>
             </div>
-        }
+          </div>
+        )}
+
+        {/* Action button */}
+        <button className="mt-4 w-full py-3 rounded-lg border border-white/10 hover:border-brand-red hover:bg-brand-red/10 text-white font-oswald text-xs font-bold uppercase tracking-[0.2em] transition-all">
+          Quick Order
+        </button>
       </div>
-    </div>
-  )
+    </motion.div>
+  );
 }
 
 export default function Menu() {
-  const [tab, setTab] = useState('cheesesteaks')
-  const sectionRef = useRef(null)
+  const [activeTab, setActiveTab] = useState('cheesesteaks');
+  const sectionRef = useRef(null);
+  const bgRef = useRef(null);
+
+  const tabs = [
+    { id: 'cheesesteaks', label: 'CheeseSteaks', icon: <Utensils size={18} /> },
+    { id: 'sandwiches', label: 'Sandwiches', icon: <Zap size={18} /> },
+    { id: 'burgers', label: 'Burgers', icon: <Star size={18} /> },
+    { id: 'sides', label: 'Sides & More', icon: <Flame size={18} /> },
+  ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.menu-section .sec-head',
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-          scrollTrigger: { trigger: '.menu-section', start: 'top 80%' } }
-      )
-      gsap.fromTo('.menu-tabs',
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', delay: 0.2,
-          scrollTrigger: { trigger: '.menu-section', start: 'top 75%' } }
-      )
-    }, sectionRef)
-    return () => ctx.revert()
-  }, [])
+      gsap.fromTo(bgRef.current, 
+        { opacity: 0, scale: 1.1 },
+        { 
+          opacity: 0.4, 
+          scale: 1,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 60%",
+            end: "top 20%",
+            scrub: 1,
+          }
+        }
+      );
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section className="menu-section" id="menu" ref={sectionRef}>
-      <div className="container">
-        <div className="sec-head" style={{ opacity: 0 }}>
-          <div className="sec-tag">Full Menu</div>
-          <h2 className="sec-title">WHAT WE <span>SERVE</span></h2>
-        </div>
+    <section ref={sectionRef} className="py-32 bg-brand-dark relative overflow-hidden" id="menu">
+      {/* User Requested Fire GIF Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div 
+          ref={bgRef}
+          className="absolute inset-0 bg-cover bg-center mix-blend-screen opacity-0"
+          style={{ backgroundImage: `url('https://i.pinimg.com/originals/a2/dc/31/a2dc314adf7e4c4bad82d90af7a0f219.gif')` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-brand-dark" />
+      </div>
 
-        <div className="menu-tabs" style={{ opacity: 0 }}>
-          {[['cheesesteaks','🥩','CheeseSteaks'],['sandwiches','🍗','Sandwiches'],['burgers','🍔','Burgers'],['sides','🍟','Sides & More']].map(([id,icon,label]) => (
-            <button key={id} className={`tab-btn${tab===id?' active':''}`} onClick={() => setTab(id)}>
-              <span className="tab-icon">{icon}</span> {label}
+      <div className="container mx-auto px-6 relative z-10">
+        <header className="text-center max-w-4xl mx-auto mb-20">
+          <motion.span 
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block px-8 py-3 rounded-full bg-brand-red text-white font-oswald text-xs font-black uppercase tracking-[0.5em] mb-8 shadow-[0_0_30px_rgba(192,26,8,0.5)]"
+          >
+            Taste the Masterpieces
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-oswald text-8xl md:text-[10rem] font-black uppercase text-white mb-8 leading-none"
+          >
+            WHAT WE <span className="text-transparent [-webkit-text-stroke:2px_theme(colors.brand.red)]">SERVE</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="font-inter text-2xl text-white/50 leading-relaxed font-light italic"
+          >
+            "Every plate is a story of fire, tradition, and uncompromising quality."
+          </motion.p>
+        </header>
+
+        {/* Tabs */}
+        <div className="flex flex-wrap justify-center gap-4 mb-20">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={cn(
+                "flex items-center gap-4 px-10 py-5 rounded-2xl font-oswald text-lg font-black uppercase tracking-widest transition-all duration-500 relative overflow-hidden group",
+                activeTab === tab.id 
+                  ? "bg-brand-red text-white shadow-[0_20px_50px_rgba(192,26,8,0.4)] scale-110" 
+                  : "bg-white/5 text-white/40 hover:bg-white/10 hover:text-white"
+              )}
+            >
+              <span className={cn("transition-transform duration-500", activeTab === tab.id ? "scale-125 rotate-12" : "group-hover:scale-110 group-hover:rotate-6")}>
+                {tab.icon}
+              </span>
+              {tab.label}
+              {activeTab === tab.id && (
+                <motion.div 
+                  layoutId="activeTab"
+                  className="absolute inset-0 bg-white/10"
+                />
+              )}
             </button>
           ))}
         </div>
 
-        {/* CheeseSteaks */}
-        <div className={`tab-pane${tab==='cheesesteaks'?' active':''}`} id="tab-cheesesteaks">
-          <div className="menu-grid">
-            {cheesesteaks.map((item, i) => <MenuCard key={i} item={item} />)}
-          </div>
-          <div className="texas-banner">
-            <div className="tb-left">
-              <span className="tb-icon">🤠</span>
-              <div>
-                <h3>Make It Texas Size!</h3>
-                <p>Double Everything on any CheeseSteaks</p>
-              </div>
-            </div>
-            <div className="tb-right">+$4.99</div>
-          </div>
-          <div className="addons-box">
-            <h3 className="addons-heading">Add-Ons</h3>
-            <div className="addons-grid">
-              {addons.map(([name, price], i) => (
-                <div className="addon" key={i}>
-                  <span>{name}</span><span>{price}</span>
-                </div>
+        {/* Content */}
+        <div className="min-h-[800px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.5, ease: "anticipate" }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
+            >
+              {(activeTab !== 'sides' ? menuData[activeTab] : []).map((item, idx) => (
+                <MenuCard key={`${activeTab}-${idx}`} item={item} />
               ))}
-            </div>
-          </div>
-        </div>
 
-        {/* Sandwiches */}
-        <div className={`tab-pane${tab==='sandwiches'?' active':''}`} id="tab-sandwiches">
-          <div className="menu-grid">
-            {sandwiches.map((item, i) => <MenuCard key={i} item={item} />)}
-          </div>
-          <div className="combo-banner">
-            <span className="combo-icon">🍟</span>
-            <div>
-              <h3>Make it a Combo!</h3>
-              <p>Any sandwich + Fries &amp; Soda · Upgrades Available</p>
-            </div>
-            <span className="combo-price">+$3.99</span>
-          </div>
-        </div>
-
-        {/* Burgers */}
-        <div className={`tab-pane${tab==='burgers'?' active':''}`} id="tab-burgers">
-          <p className="tab-note">All burgers served with lettuce, tomato, pickles &amp; house sauce</p>
-          <div className="menu-grid">
-            {burgers.map((item, i) => <MenuCard key={i} item={item} />)}
-          </div>
-        </div>
-
-        {/* Sides */}
-        <div className={`tab-pane${tab==='sides'?' active':''}`} id="tab-sides">
-          <div className="sides-layout">
-            <div className="sides-group">
-              <h3 className="sg-title">🍟 Sides</h3>
-              <div className="sides-list">
-                {sides.map(([name, reg, lg], i) => (
-                  <div className="side-row" key={i}>
-                    <span>{name}</span>
-                    <div className="side-pr">
-                      <span>Reg <strong>{reg}</strong></span>
-                      {lg && <span>Lg <strong>{lg}</strong></span>}
+              {activeTab === 'sides' && (
+                <div className="col-span-full grid grid-cols-1 lg:grid-cols-2 gap-16">
+                  <div className="bg-brand-dark2 border-4 border-white/5 p-12 rounded-[3rem] shadow-2xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-brand-red/10 blur-[100px] -translate-y-1/2 translate-x-1/2" />
+                    <h3 className="font-oswald text-4xl font-black uppercase text-white mb-10 flex items-center gap-4 border-b border-brand-red pb-6">
+                      <span className="p-4 bg-brand-red/10 rounded-2xl"><Flame className="text-brand-red w-8 h-8" /></span>
+                      Featured Sides
+                    </h3>
+                    <div className="space-y-8">
+                      {menuData.sides.map((side, i) => (
+                        <div key={i} className="flex justify-between items-center group cursor-default">
+                          <div className="flex items-center gap-6">
+                            <span className="text-4xl transition-transform group-hover:scale-125 group-hover:rotate-12">{side.icon}</span>
+                            <div>
+                                <span className="block font-oswald text-2xl text-white font-bold group-hover:text-brand-red transition-colors">{side.name}</span>
+                                <span className="text-white/30 text-xs font-inter uppercase tracking-widest">Handmade Fresh</span>
+                            </div>
+                          </div>
+                          <div className="flex gap-8 font-oswald">
+                            <div className="flex flex-col items-end">
+                              <span className="text-white/30 uppercase text-[10px] tracking-widest">Reg</span>
+                              <span className="text-brand-gold font-bold text-xl">{side.reg}</span>
+                            </div>
+                            <div className="flex flex-col items-end">
+                              <span className="text-white/30 uppercase text-[10px] tracking-widest">Large</span>
+                              <span className="text-brand-gold font-bold text-xl">{side.lg}</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
 
-            <div className="sides-extras">
-              <div className="extras-card">
-                <div className="ec-icon">🍽️</div>
-                <h3>Combos</h3>
-                <p>Make any sandwich a combo</p>
-                <p className="ec-note">Fries &amp; Soda · Upgrades Available</p>
-                <span className="ec-price">+$3.99</span>
-              </div>
-              <div className="extras-card">
-                <div className="ec-icon">👶</div>
-                <h3>Kids Menu</h3>
-                <div className="kids-row">
-                  <p>Chicken Nuggets + Unseasoned Fries</p>
-                  <div className="kids-pr"><span>4pc <strong>$5.99</strong></span><span>8pc <strong>$8.49</strong></span></div>
+                  <div className="space-y-12">
+                    <div className="bg-gradient-to-br from-brand-dark2 to-brand-gold/10 border-4 border-brand-gold/20 p-12 rounded-[3rem] relative overflow-hidden group shadow-2xl">
+                      <div className="absolute -right-8 -top-8 text-[12rem] opacity-5 rotate-12 transition-transform group-hover:scale-125 group-hover:rotate-0">🤠</div>
+                      <h3 className="font-oswald text-5xl font-black uppercase text-brand-gold mb-4 leading-none">Texas Size It!</h3>
+                      <p className="text-white/50 text-xl font-light mb-8 max-w-sm">Deeply satisfy your hunger with Double Meat and Double Cheese.</p>
+                      <div className="flex items-center justify-between pt-6 border-t border-white/5">
+                        <span className="font-oswald text-5xl font-black text-white">$4.99 <span className="text-sm text-white/30 font-medium">Extra</span></span>
+                        <button className="bg-brand-gold text-brand-dark px-10 py-5 rounded-2xl font-black uppercase text-xs tracking-widest transition-all hover:scale-110 active:scale-95 shadow-xl">Upgrade</button>
+                      </div>
+                    </div>
+
+                    <div className="bg-brand-dark2 border-4 border-white/5 p-12 rounded-[3rem] shadow-2xl">
+                      <h3 className="font-oswald text-2xl font-black uppercase text-white mb-8 border-b border-white/5 pb-4">Add-Ons & Extras</h3>
+                      <div className="flex flex-wrap gap-4">
+                        {extras.map((ex, i) => (
+                          <div key={i} className="px-6 py-4 rounded-2xl border-2 border-white/5 bg-white/5 text-sm font-black text-white/70 uppercase hover:border-brand-red hover:text-white transition-all cursor-pointer active:scale-95">
+                            {ex.name} <span className="text-brand-gold ml-2">{ex.price}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="kids-row">
-                  <p>3PC Chicken Tenders + Unseasoned Fries</p>
-                  <strong className="ec-price">$9.99</strong>
-                </div>
-              </div>
-              <div className="extras-card">
-                <div className="ec-icon">🥤</div>
-                <h3>Beverages</h3>
-                <div className="bev-list">
-                  {[['Bottled Water','$1.49'],['Canned Soda','$2.49'],['Jaritos','$3.49'],['Mexican Tall Soda','$4.49']].map(([n,p],i) => (
-                    <div className="bev-row" key={i}><span>{n}</span><span>{p}</span></div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+              )}
+            </motion.div>
+          </AnimatePresence>
         </div>
-
       </div>
+
+      {/* Decorative Fire Elements */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-red/5 rounded-full blur-[200px] -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-brand-gold/5 rounded-full blur-[200px] translate-y-1/2 -translate-x-1/2" />
     </section>
-  )
+  );
 }
