@@ -11,7 +11,7 @@ export default function Footer() {
               <span className="font-oswald text-3xl font-bold tracking-widest text-white">
                 S&S <span className="text-brand-red">CHEESE</span>
               </span>
-              <span className="font-inter text-[11px] font-bold tracking-[0.4em] text-white/40 uppercase">
+              <span className="font-greatvibes text-lg text-white/60 lowercase mt-1">
                 Steaks & More
               </span>
             </a>
@@ -30,7 +30,7 @@ export default function Footer() {
 
           {/* Nav Col */}
           <div>
-            <h4 className="font-oswald text-lg font-bold uppercase tracking-widest text-white mb-8">Navigation</h4>
+            <h4 className="font-greatvibes text-4xl text-brand-gold mb-8">Navigation</h4>
             <ul className="space-y-4">
               {['Home', 'Menu', 'Featured', 'About', 'Contact'].map((item) => (
                 <li key={item}>
@@ -45,7 +45,7 @@ export default function Footer() {
 
           {/* Contact Col */}
           <div>
-            <h4 className="font-oswald text-lg font-bold uppercase tracking-widest text-white mb-8">Contact Us</h4>
+            <h4 className="font-greatvibes text-4xl text-brand-gold mb-8">Contact Us</h4>
             <ul className="space-y-6">
               <li className="flex gap-4">
                 <MapPin className="text-brand-red shrink-0" size={20} />
@@ -64,7 +64,7 @@ export default function Footer() {
 
           {/* Hours Col */}
           <div>
-            <h4 className="font-oswald text-lg font-bold uppercase tracking-widest text-white mb-8">Working Hours</h4>
+            <h4 className="font-greatvibes text-4xl text-brand-gold mb-8">Working Hours</h4>
             <ul className="space-y-4">
               <li className="flex justify-between items-center text-sm">
                 <span className="font-inter text-white/70">Mon - Thu</span>

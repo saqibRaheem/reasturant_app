@@ -72,9 +72,9 @@ export default function FeaturedSlider() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-oswald text-7xl font-black uppercase text-white leading-none"
+              className="font-oswald text-6xl md:text-7xl font-black uppercase text-white leading-none"
             >
-              CHOSEN BY <span className="text-brand-red">THE PEOPLE</span>
+              CHOSEN BY <span className="font-greatvibes text-brand-red text-8xl md:text-9xl normal-case italic ml-4">The People</span>
             </motion.h2>
           </div>
           <motion.p 
@@ -122,7 +122,7 @@ export default function FeaturedSlider() {
                 
                 <div className="p-10 flex flex-col flex-grow bg-gradient-to-b from-brand-dark to-brand-dark2">
                   <span className="font-oswald text-xs font-bold uppercase tracking-[0.3em] text-brand-gold mb-3">{slide.cat}</span>
-                  <h3 className="font-oswald text-4xl font-black uppercase text-white mb-4 transition-colors group-hover:text-brand-red">
+                  <h3 className="font-greatvibes text-4xl text-white mb-4 transition-colors group-hover:text-brand-red">
                     {slide.name}
                   </h3>
                   <p className="font-inter text-base text-white/40 leading-relaxed mb-6 flex-grow line-clamp-3">

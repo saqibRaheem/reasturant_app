@@ -99,8 +99,8 @@ export default function Hero() {
             className="inline-flex items-center gap-3 bg-brand-red/10 border border-brand-red/30 px-4 py-2 rounded-full mb-8 backdrop-blur-md"
           >
             <span className="w-2 h-2 rounded-full bg-brand-red animate-ping" />
-            <span className="font-oswald text-xs font-bold tracking-[0.4em] uppercase text-brand-red">
-              Authentic Philly Experience
+            <span className="font-greatvibes text-xl text-brand-red lowercase">
+              authentic philly experience
             </span>
           </motion.div>
 
@@ -130,9 +130,9 @@ export default function Hero() {
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.8 }}
-              className="text-5xl md:text-7xl text-brand-gold tracking-widest"
+              className="text-5xl md:text-7xl text-white tracking-widest flex items-center gap-4 flex-wrap justify-center lg:justify-start"
             >
-              EXPERIENCE
+              LEGEND <span className="font-greatvibes text-brand-gold text-7xl md:text-8xl normal-case tracking-normal">Experience</span>
             </motion.span>
           </h1>
 

@@ -17,6 +17,7 @@ export default {
       fontFamily: {
         oswald: ['Oswald', 'sans-serif'],
         dancing: ['Dancing Script', 'cursive'],
+        greatvibes: ['Great Vibes', 'cursive'],
         inter: ['Inter', 'sans-serif'],
       },
       animation: {

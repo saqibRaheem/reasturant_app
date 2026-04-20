@@ -39,9 +39,9 @@ export default function Gallery() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-oswald text-7xl md:text-9xl font-black uppercase text-white mb-8"
+            className="font-oswald text-6xl md:text-8xl lg:text-9xl font-black uppercase text-white mb-8"
           >
-            LIVING THE <span className="text-brand-red">FLAME</span> LIFE
+            LIVING THE <span className="font-greatvibes text-brand-red text-8xl md:text-[8rem] lg:text-[12rem] normal-case italic ml-4">Flame</span> LIFE
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -71,7 +71,7 @@ export default function Gallery() {
                 />
                 {i % 2 === 0 && <Steam />}
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-10">
-                    <span className="font-oswald text-3xl font-black uppercase text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{img.title}</span>
+                    <span className="font-greatvibes text-4xl text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{img.title}</span>
                     <span className="font-inter text-xs text-brand-red font-bold uppercase tracking-widest mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">Click to view full</span>
                 </div>
                 

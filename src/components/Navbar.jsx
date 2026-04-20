@@ -32,9 +32,9 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#home" className="group flex flex-col leading-none">
           <span className="font-oswald text-2xl font-bold tracking-widest text-white">
-            S&S <span className="text-brand-red group-hover:text-white transition-colors">CHEESE</span>
+            S&S <span className="font-greatvibes text-4xl text-brand-red group-hover:text-white transition-colors normal-case tracking-normal">Cheese</span>
           </span>
-          <span className="font-inter text-[10px] font-bold tracking-[0.3em] text-white/40 uppercase">
+          <span className="font-greatvibes text-sm text-white/40 lowercase mt-1">
             Steaks & More
           </span>
         </a>

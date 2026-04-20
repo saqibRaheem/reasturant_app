@@ -13,8 +13,8 @@ export default function Contact() {
               <span className="inline-block px-4 py-1.5 rounded-full border border-brand-red/30 text-brand-red font-inter text-[10px] font-bold uppercase tracking-[0.3em] mb-4">
                 Get In Touch
               </span>
-              <h2 className="font-oswald text-5xl font-black uppercase text-white mb-6">
-                VISIT THE <span className="text-brand-red">SOURCE</span>
+              <h2 className="font-oswald text-4xl md:text-5xl font-black uppercase text-white mb-6">
+                VISIT THE <span className="font-greatvibes text-brand-red text-6xl md:text-7xl normal-case italic ml-2">Source</span>
               </h2>
               <p className="font-inter text-white/50 leading-relaxed max-w-md">
                 Craving the best Philly CheeseSteak in Texas? Swing by our Carrollton location 

@@ -76,7 +76,7 @@ export default function About() {
               
               {/* Overlay Text */}
               <div className="absolute bottom-12 left-12 right-12">
-                <div className="font-oswald text-4xl font-bold text-white uppercase leading-none mb-2">The Secret lies in the <span className="text-brand-red">Fire</span></div>
+                <div className="font-oswald text-4xl font-bold text-white uppercase leading-none mb-2">The Secret lies in the <span className="font-greatvibes text-brand-red text-6xl lowercase">Fire</span></div>
                 <div className="font-inter text-sm text-white/60 uppercase tracking-widest">Handmade since 2020</div>
               </div>
             </motion.div>
@@ -122,7 +122,7 @@ export default function About() {
               <motion.h2 
                 className="about-heading font-oswald text-7xl md:text-8xl font-black uppercase text-white leading-[0.9] mb-8"
               >
-                WE BORN FROM THE <span className="text-brand-red italic">FLAMES</span>
+                WE BORN FROM THE <span className="font-greatvibes text-brand-red text-8xl md:text-9xl normal-case italic">Flames</span>
               </motion.h2>
             </header>
 

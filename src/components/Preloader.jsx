@@ -56,7 +56,7 @@ export default function Preloader({ onComplete }) {
 
         <div ref={textRef} className="text-center mb-8">
           <h2 className="font-oswald text-4xl font-bold tracking-[0.2em] text-white">
-            S&S <span className="text-brand-red">CHEESE</span>STEAKS
+            S&S <span className="font-greatvibes text-brand-red text-6xl normal-case tracking-normal">Cheese</span>steaks
           </h2>
           <p className="font-inter text-[10px] uppercase font-bold tracking-[0.6em] text-white/30 mt-2">
             Richardson, TX
