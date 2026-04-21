@@ -4,6 +4,7 @@ import { ChevronRight } from 'lucide-react';
 import gsap from 'gsap';
 import Steam from './Steam';
 
+
 export default function Hero() {
   const embersRef = useRef(null);
   const containerRef = useRef(null);
@@ -126,6 +127,7 @@ export default function Hero() {
             >
               FLAME
             </motion.span>
+            
             <motion.span
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}

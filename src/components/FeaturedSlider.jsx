@@ -9,6 +9,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/free-mode';
 
+
 const slides = [
   { image: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=800&auto=format&fit=crop', cat: 'CheeseSteaks', name: 'Original Philly', desc: 'Seasoned juicy steak, Swiss/American cheese & creamy mayo.', price: '$12.99', badge: 'Authentic' },
   { image: 'https://images.unsplash.com/photo-1621800043295-a73fe2f76e2c?q=80&w=800&auto=format&fit=crop', cat: 'CheeseSteaks', name: 'Flaming Hot', desc: 'Spicy steak, American cheese, jalapeños, and ghost pepper sauce.', price: '$14.99', badge: 'Hot' },

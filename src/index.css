@@ -78,3 +78,69 @@
 ::-webkit-scrollbar-thumb {
   @apply bg-brand-red/50 rounded-full hover:bg-brand-red;
 }
+
+
+.flame-text {
+  font-size: clamp(4rem, 10vw, 16rem);
+  font-weight: 900;
+  text-align: center;
+  position: relative;
+
+  /* 🔥 Fire Gradient */
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff4d00,
+    #ff9900,
+    #ffcc00,
+    #ff4d00,
+    #ff0000
+  );
+  background-size: 300% auto;
+
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* 🔥 Glow */
+  text-shadow:
+    0 0 10px rgba(255, 77, 0, 0.8),
+    0 0 20px rgba(255, 140, 0, 0.8),
+    0 0 40px rgba(255, 69, 0, 0.7),
+    0 0 80px rgba(255, 0, 0, 0.6);
+
+  /* 🔥 Animations */
+  animation: flameMove 3s linear infinite,
+             flicker 1.5s infinite alternate;
+}
+
+/* 🔥 Moving Fire Gradient */
+@keyframes flameMove {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 300% center;
+  }
+}
+
+/* 🔥 Flicker Effect */
+@keyframes flicker {
+  0% {
+    text-shadow:
+      0 0 5px rgba(255, 77, 0, 0.6),
+      0 0 15px rgba(255, 140, 0, 0.6);
+  }
+  50% {
+    text-shadow:
+      0 0 20px rgba(255, 69, 0, 0.9),
+      0 0 40px rgba(255, 0, 0, 0.8);
+  }
+  100% {
+    text-shadow:
+      0 0 10px rgba(255, 99, 0, 0.7),
+      0 0 30px rgba(255, 50, 0, 0.7);
+  }
+}
+
+
