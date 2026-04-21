@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 import { cn } from '../utils/cn';
 
+import logo from '../assets/logo/JPG/1.png';
+
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'Menu', href: '#menu' },
@@ -30,13 +32,8 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="group flex flex-col leading-none">
-          <span className="font-oswald text-2xl font-bold tracking-widest text-white">
-            S&S <span className="font-greatvibes text-4xl text-brand-red group-hover:text-white transition-colors normal-case tracking-normal">Cheese</span>
-          </span>
-          <span className="font-greatvibes text-sm text-white/40 lowercase mt-1">
-            Steaks & More
-          </span>
+        <a href="#home" className="group flex items-center">
+          <img src={logo} alt="S&S CheeseSteaks" className="h-16 md:h-20 w-auto transition-transform duration-500 group-hover:scale-105" />
         </a>
 
         {/* Desktop Nav */}
@@ -55,12 +52,12 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-6">
-          <a 
-            href="#menu" 
+          <button 
+            onClick={() => window.dispatchEvent(new CustomEvent('OPEN_ORDER_MODAL'))}
             className="flex items-center gap-2 bg-brand-red hover:bg-red-600 text-white px-6 py-2.5 rounded-full font-oswald text-sm font-bold uppercase tracking-wider transition-all hover:scale-105"
           >
             Order Now
-          </a>
+          </button>
         </div>
 
         {/* Mobile Toggle */}
@@ -92,13 +89,12 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
-              <a 
-                href="#menu"
-                onClick={() => setIsOpen(false)}
-                className="mt-4 bg-brand-red text-white py-4 font-oswald text-lg font-bold uppercase"
+              <button 
+                onClick={() => { setIsOpen(false); window.dispatchEvent(new CustomEvent('OPEN_ORDER_MODAL')); }}
+                className="mt-4 bg-brand-red text-white py-4 font-oswald text-lg font-bold uppercase w-full text-center"
               >
                 Order Online
-              </a>
+              </button>
             </div>
           </motion.div>
         )}

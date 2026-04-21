@@ -10,6 +10,7 @@ import About from './components/About';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import OrderModal from './components/OrderModal';
 import './App.css';
 
 export default function App() {
@@ -46,6 +47,7 @@ export default function App() {
             <Contact />
           </main>
           <Footer />
+          <OrderModal />
         </div>
       )}
     </div>

@@ -53,7 +53,7 @@ function MenuCard({ item }) {
       {/* Content */}
       <div className="p-6 flex flex-col flex-grow">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="font-greatvibes text-3xl text-white group-hover:text-brand-red transition-colors">
+          <h3 className="font-architects text-3xl text-white group-hover:text-brand-red transition-colors">
             {item.name}
           </h3>
           {item.price && (
@@ -99,7 +99,10 @@ function MenuCard({ item }) {
         )}
 
         {/* Action button */}
-        <button className="mt-4 w-full py-3 rounded-lg border border-white/10 hover:border-brand-red hover:bg-brand-red/10 text-white font-oswald text-xs font-bold uppercase tracking-[0.2em] transition-all">
+        <button 
+          onClick={() => window.dispatchEvent(new CustomEvent('OPEN_ORDER_MODAL', { detail: { itemName: item.name } }))}
+          className="mt-4 w-full py-3 rounded-lg border border-white/10 hover:border-brand-red hover:bg-brand-red/10 text-white font-oswald text-xs font-bold uppercase tracking-[0.2em] transition-all"
+        >
           Quick Order
         </button>
       </div>
@@ -208,7 +211,6 @@ export default function Menu() {
           ))}
         </div>
 
-        {/* Category Header with Great Vibes Font */}
         <motion.div 
           key={`title-${activeTab}`}
           initial={{ opacity: 0, y: 20 }}

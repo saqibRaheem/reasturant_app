@@ -91,8 +91,8 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-brand-dark/20" />
       </motion.div>
 
-      <div className="relative z-20 container mx-auto px-6 py-20 lg:py-0 w-full flex flex-col lg:flex-row items-center justify-between min-h-screen gap-12 mt-24">
-        <div className="w-full lg:w-3/5 text-center lg:text-left">
+      <div className="relative z-20 container mx-auto px-6 py-20 lg:py-0 w-full flex flex-col lg:flex-row items-center justify-between min-h-screen gap-12 mt-[7rem]">
+        <div className="w-full text-center lg:text-left">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -123,9 +123,9 @@ export default function Hero() {
                 type: "spring",
                 stiffness: 80
               }}
-              className="text-8xl md:text-[10rem] lg:text-[12rem] xl:text-[16rem] text-transparent [-webkit-text-stroke:2px_#ff4d00] drop-shadow-[0_0_100px_rgba(255,77,0,0.8)] py-4 leading-none"
+              className="wrappers text-8xl md:text-[10rem] lg:text-[12rem] xl:text-[16rem] text-transparent [-webkit-text-stroke:2px_#ff4d00] drop-shadow-[0_0_100px_rgba(255,77,0,0.8)] py-4 leading-none"
             >
-              FLAME
+             <h1 className='title'>FLAME</h1>
             </motion.span>
             
             <motion.span

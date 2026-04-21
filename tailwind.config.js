@@ -19,6 +19,7 @@ export default {
         dancing: ['Dancing Script', 'cursive'],
         greatvibes: ['Great Vibes', 'cursive'],
         inter: ['Inter', 'sans-serif'],
+        architects: ['"Architects Daughter"', 'cursive'],
       },
       animation: {
         'marquee': 'marquee 30s linear infinite',

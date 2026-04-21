@@ -142,5 +142,36 @@
       0 0 30px rgba(255, 50, 0, 0.7);
   }
 }
+.wrappers{
+    width: 100%;
+    margin: 0 auto;
+    font-family: Arial;
+    font-size: 80px;
+}
 
+.title{
+    text-transform: uppercase;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.2);
+    background: url(./assets/images/fire-burn.jpg) repeat-x;
+    background-size: contain;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fire 15s linear infinite;
+}
+
+@keyframes fire {
+    0% {
+        background-position: left 0 top 25px;
+    }
+
+    50% {
+        background-position: left 130px top -35px;
+    }
+
+    100% {
+        background-position:  left 250px top 0px;
+    }
+}
 

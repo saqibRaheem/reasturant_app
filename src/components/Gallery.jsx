@@ -2,13 +2,26 @@ import { motion } from 'framer-motion';
 import { cn } from '../utils/cn';
 import Steam from './Steam';
 
+import img1 from '../assets/images/thirteen.jpeg';
+import img2 from '../assets/images/seven.jpeg';
+import img3 from '../assets/images/double-zinger.jpeg';
+import img4 from '../assets/images/steak-cheese.jpeg';
+import img5 from '../assets/images/flaming-hot-zinger.jpeg';
+import img6 from '../assets/images/texas-burger.jpeg';
+import img7 from '../assets/images/five.jpeg';
+import img8 from '../assets/images/ten.jpeg';
+import img9 from '../assets/images/three.jpeg';
+
 const images = [
-  { url: 'https://images.unsplash.com/photo-1550317144-b3adb15c44a9?q=80&w=800&auto=format&fit=crop', title: 'The Master Smash' },
-  { url: 'https://images.unsplash.com/photo-1512152272829-e3139592d56f?q=80&w=800&auto=format&fit=crop', title: 'Golden Crispy' },
-  { url: 'https://images.unsplash.com/photo-1549611016-3a70d82b5040?q=80&w=800&auto=format&fit=crop', title: 'Philly Legend' },
-  { url: 'https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop', title: 'Cheese Overflow' },
-  { url: 'https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?q=80&w=800&auto=format&fit=crop', title: 'Flame Grilled' },
-  { url: 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?q=80&w=800&auto=format&fit=crop', title: 'Texas Heart' },
+  { url: img1, title: 'Cheese Overflow' },
+  { url: img2, title: 'Spicy Cheetos' },
+  { url: img3, title: 'Double Zinger' },
+  { url: img4, title: 'Classic Philly' },
+  { url: img5, title: 'Flaming Hot' },
+  { url: img6, title: 'Texas Heat' },
+  { url: img7, title: 'Meat Lovers' },
+  { url: img8, title: 'Golden Smash' },
+  { url: img9, title: 'Tower of Flavor' }
 ];
 
 export default function Gallery() {
