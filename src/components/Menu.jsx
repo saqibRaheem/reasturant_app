@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Utensils, Flame, Star, Zap } from 'lucide-react';
+import Image from 'next/image';
 import { menuData, extras } from '../data/menuData';
 import { cn } from '../utils/cn';
 import Steam from './Steam';
@@ -40,10 +41,12 @@ function MenuCard({ item }) {
       {item.image && (
         <div className="relative h-64 overflow-hidden">
           {item.fire && <Steam />}
-          <img 
+          <Image 
             src={item.image} 
             alt={item.name}
-            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover transition-transform duration-1000 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-dark2 via-transparent to-transparent opacity-60" />
           

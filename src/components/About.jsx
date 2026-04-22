@@ -2,6 +2,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Steam from './Steam';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -70,10 +71,12 @@ export default function About() {
               className="relative z-10 rounded-[4rem] overflow-hidden border-4 border-white/5 aspect-[4/5] shadow-[0_50px_100px_-20px_rgba(0,0,0,1)]"
             >
               <Steam />
-              <img 
-                src={"../assets/images/flaming-hot-zinger.jpeg"} 
+              <Image 
+                src="/assets/images/flaming-hot-zinger.jpeg" 
                 alt="The Sizzle" 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-2"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-2"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent" />
               

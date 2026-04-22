@@ -3,19 +3,19 @@
 export const menuData = {
   cheesesteaks: [
     { 
-      image: '../../assets/images/stack-chees.jpeg',  
+      image: '/assets/images/stack-chees.jpeg',  
       name: 'STEAK N CHEESE', 
       desc: 'SEASONED JUICY STEAK, SWISS/AMERICAN CHEESE & MAYO', 
       price: '$9.99' 
     },
     { 
-      image: '../../assets/images/twelve.jpeg', 
+      image: '/assets/images/twelve.jpeg', 
       name: 'BARBEQUE', 
       desc: 'SEASONED JUICY STEAK, AMERICAN CHEESE, GRILLED ONIONS, BBQ SAUCE', 
       price: '$11.99' 
     },
     { 
-      image: '../../assets/images/twelve.jpeg', 
+      image: '/assets/images/twelve.jpeg', 
       name: 'SIGNATURE', 
       desc: 'SEASONED JUICY STEAK, SWISS/AMERICAN CHEESE, GRILLED ONIONS, BELL PEPPERS, MUSHROOM & MAYO', 
       price: '$11.99', 
@@ -44,19 +44,19 @@ export const menuData = {
   ],
   shareables: [
     {
-      image: 'https://images.unsplash.com/photo-1573225342350-16731dd9bf3d?q=80&w=800&auto=format&fit=crop',
+      image: '/assets/images/thirteen.jpeg',
       name: 'PHILLY CHEESE FRIES',
       desc: '(COMES WITH SIGNATURE PHILLY) CHOOSE ANY OTHER STYLE AVAILABLE',
       price: '$11.99'
     },
     {
-      image: 'https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?q=80&w=800&auto=format&fit=crop',
+      image: '/assets/images/seven.jpeg',
       name: 'PHILLY CHEESE NACHOS',
       desc: '(COMES WITH SIGNATURE PHILLY) CHOOSE ANY OTHER STYLE AVAILABLE',
       price: '$11.99'
     },
     {
-      image: 'https://images.unsplash.com/photo-1626078437292-cc76dc560295?q=80&w=800&auto=format&fit=crop',
+      image: '/assets/images/six.jpeg',
       name: 'PHILLY CHEESE TOTS',
       desc: '(COMES WITH SIGNATURE PHILLY) CHOOSE ANY OTHER STYLE AVAILABLE',
       price: '$11.99'
@@ -87,7 +87,7 @@ export const menuData = {
       fire: true 
     },
     { 
-      image: 'https://images.unsplash.com/photo-1626078299034-90407a10fd34?q=80&w=800&auto=format&fit=crop', 
+      image: '/assets/images/double-zinger.jpeg', 
       name: 'BBQ BACON ZINGER', 
       desc: 'FRESHLY HAND BATTERED CHICKEN BREAST TOPPED WITH OUR MAGICAL HOUSE SAUCE, COLESLAW, BEEF BRISKET BACON, BBQ SAUCE & CHEESE', 
       price: '$12.99' 
@@ -95,14 +95,14 @@ export const menuData = {
   ],
   burgers: [
     { 
-      image: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=800&auto=format&fit=crop', 
+      image: '/assets/images/stack-chees.jpeg', 
       name: 'OG CHEESEBURGER', 
       desc: 'SEASONED BEEF PATTY, AMERICAN CHEESE', 
       single: '$9.99', 
       double: '$13.99' 
     },
     { 
-      image: 'https://images.unsplash.com/photo-1534790561517-40e1c944f24c?q=80&w=800&auto=format&fit=crop', 
+      image: '/assets/images/chees-burger.jpeg', 
       name: 'MUSHROOM N SWISS', 
       desc: 'SEASONED BEEF PATTY, SWISS CHEESE, GRILLED MUSHROOMS', 
       single: '$10.99', 
@@ -116,7 +116,7 @@ export const menuData = {
       double: '$13.99' 
     },
     { 
-      image: 'https://images.unsplash.com/photo-1619177383921-9e79f64817a1?q=80&w=800&auto=format&fit=crop', 
+      image: '/assets/images/texas-burger.jpeg', 
       name: 'TEXAS BURGER', 
       desc: 'SEASONED BEEF PATTY, AMERICAN CHEESE TOPPED WITH SIGNATURE PHILLY CHEESE STEAK', 
       price: '$12.99'

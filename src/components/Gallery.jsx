@@ -71,9 +71,11 @@ export default function Gallery() {
               className="relative group overflow-hidden rounded-[3rem] border-4 border-white/5 shadow-2xl break-inside-avoid"
             >
               <div className="relative">
-                <img
+                <Image
                   src={img.url} 
                   alt={img.title} 
+                  width={800}
+                  height={1000}
                   className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1"
                 />
                 {i % 2 === 0 && <Steam />}

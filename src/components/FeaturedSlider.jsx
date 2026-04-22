@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade, FreeMode } from 'swiper/modules';
 import { motion } from 'framer-motion';
 import Steam from './Steam';
+import Image from 'next/image';
 import { gsap } from 'gsap';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -15,7 +16,7 @@ const slides = [
   { image: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=800&auto=format&fit=crop', cat: 'CheeseSteaks', name: 'SIGNATURE', desc: 'SEASONED JUICY STEAK, SWISS/AMERICAN CHEESE, GRILLED ONIONS, BELL PEPPERS, MUSHROOM & MAYO', price: '$11.99', badge: 'HOUSE SPECIAL' },
   { image: 'https://images.unsplash.com/photo-1621800043295-a73fe2f76e2c?q=80&w=800&auto=format&fit=crop', cat: 'CheeseSteaks', name: 'FLAMING HOT', desc: 'SEASONED SPICY STEAK, AMERICAN CHEESE, GRILLED JALAPENOS, CHEETO DUST, HOT SAUCE', price: '$11.99', badge: 'EXTRA HOT' },
   { image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop', cat: 'Sandwiches', name: 'OG ZINGER', desc: 'FRESHLY HAND BATTERED CHICKEN BREAST TOPPED WITH OUR MAGICAL HOUSE SAUCE, HOT N SWEET SAUCE, COLESLAW & CHEESE', price: '$9.99', badge: 'BEST SELLER' },
-  { image: 'https://images.unsplash.com/photo-1619177383921-9e79f64817a1?q=80&w=800&auto=format&fit=crop', cat: 'Burgers', name: 'TEXAS BURGER', desc: 'SEASONED BEEF PATTY, AMERICAN CHEESE TOPPED WITH SIGNATURE PHILLY CHEESE STEAK', price: '$12.99', badge: 'TEXAS STYLE' },
+  { image: '/assets/images/texas-burger.jpeg', cat: 'Burgers', name: 'TEXAS BURGER', desc: 'SEASONED BEEF PATTY, AMERICAN CHEESE TOPPED WITH SIGNATURE PHILLY CHEESE STEAK', price: '$12.99', badge: 'TEXAS STYLE' },
 ];
 
 export default function FeaturedSlider() {
@@ -111,10 +112,12 @@ export default function FeaturedSlider() {
               >
                 <div className="relative h-[350px] overflow-hidden">
                   <Steam />
-                  <img 
+                  <Image 
                     src={slide.image} 
                     alt={slide.name} 
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1"
                   />
                   <div className="absolute top-6 left-6 bg-brand-red text-white text-[10px] font-black uppercase tracking-[0.3em] px-6 py-3 rounded-full shadow-2xl">
                     {slide.badge}

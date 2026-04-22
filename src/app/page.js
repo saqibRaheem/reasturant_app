@@ -12,6 +12,7 @@ import Gallery from '@/components/Gallery';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import OrderModal from '@/components/OrderModal';
+import BurgerShowcase from '@/components/BurgerShowcase';
 
 
 export default function Home() {
@@ -41,6 +42,7 @@ export default function Home() {
             <Marquee />
             <About />
             <Stats />
+            <BurgerShowcase />
             <FeaturedSlider />
             <Menu />
             <Gallery />
