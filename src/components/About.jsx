@@ -1,8 +1,11 @@
+
+'use client';
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Steam from './Steam';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -68,7 +71,7 @@ export default function About() {
             >
               <Steam />
               <img 
-                src="https://images.unsplash.com/photo-1550950158-d0d960dff51b?q=80&w=800&auto=format&fit=crop" 
+                src={"../assets/images/flaming-hot-zinger.jpeg"} 
                 alt="The Sizzle" 
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-2"
               />

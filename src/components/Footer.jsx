@@ -1,5 +1,10 @@
+'use client';
+
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+
+
+
 export default function Footer() {
   return (
     <footer className="bg-brand-dark2 pt-20 pb-10 border-t border-white/5">
@@ -7,13 +12,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Col */}
           <div className="space-y-6">
-            <a href="#home" className="flex flex-col leading-none">
-              <span className="font-oswald text-3xl font-bold tracking-widest text-white">
-                S&S <span className="text-brand-red">CHEESE</span>
-              </span>
-              <span className="font-greatvibes text-lg text-white/60 lowercase mt-1">
-                Steaks & More
-              </span>
+            <a href="#home" className="flex items-center">
+              <img src={'../assets/logo/JPG/1.png'} alt="S&S CheeseSteaks" className="h-20 w-auto drop-shadow-xl" />
             </a>
             <p className="font-inter text-sm text-white/50 leading-relaxed">
               Experience the authentic taste of Philadelphia right here in Carrollton.

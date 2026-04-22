@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Award, Users, UtensilsCrossed, Flame } from 'lucide-react';

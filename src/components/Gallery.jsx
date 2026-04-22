@@ -1,14 +1,21 @@
+
+'use client';
 import { motion } from 'framer-motion';
 import { cn } from '../utils/cn';
 import Steam from './Steam';
+import Image from 'next/image';
+
 
 const images = [
-  { url: 'https://images.unsplash.com/photo-1550317144-b3adb15c44a9?q=80&w=800&auto=format&fit=crop', title: 'The Master Smash' },
-  { url: 'https://images.unsplash.com/photo-1512152272829-e3139592d56f?q=80&w=800&auto=format&fit=crop', title: 'Golden Crispy' },
-  { url: 'https://images.unsplash.com/photo-1549611016-3a70d82b5040?q=80&w=800&auto=format&fit=crop', title: 'Philly Legend' },
-  { url: 'https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop', title: 'Cheese Overflow' },
-  { url: 'https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?q=80&w=800&auto=format&fit=crop', title: 'Flame Grilled' },
-  { url: 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?q=80&w=800&auto=format&fit=crop', title: 'Texas Heart' },
+  { url: '/assets/images/thirteen.jpeg',           title: 'Cheese Overflow' },
+  { url: '/assets/images/seven.jpeg',              title: 'Spicy Cheetos' },
+  { url: '/assets/images/double-zinger.jpeg',      title: 'Double Zinger' },
+  { url: '/assets/images/steak-cheese.jpeg',       title: 'Classic Philly' },
+  { url: '/assets/images/flaming-hot-zinger.jpeg', title: 'Flaming Hot' },
+  { url: '/assets/images/texas-burger.jpeg',       title: 'Texas Heat' },
+  { url: '/assets/images/five.jpeg',               title: 'Meat Lovers' },
+  { url: '/assets/images/ten.jpeg',                title: 'Golden Smash' },
+  { url: '/assets/images/three.jpeg',              title: 'Tower of Flavor' },
 ];
 
 export default function Gallery() {
@@ -64,7 +71,7 @@ export default function Gallery() {
               className="relative group overflow-hidden rounded-[3rem] border-4 border-white/5 shadow-2xl break-inside-avoid"
             >
               <div className="relative">
-                <img 
+                <img
                   src={img.url} 
                   alt={img.title} 
                   className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1"

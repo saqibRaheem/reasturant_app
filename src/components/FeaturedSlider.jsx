@@ -1,3 +1,5 @@
+
+'use client';
 import { useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade, FreeMode } from 'swiper/modules';
@@ -10,10 +12,10 @@ import 'swiper/css/pagination';
 import 'swiper/css/free-mode';
 
 const slides = [
-  { image: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=800&auto=format&fit=crop', cat: 'CheeseSteaks', name: 'Original Philly', desc: 'Seasoned juicy steak, Swiss/American cheese & creamy mayo.', price: '$12.99', badge: 'Authentic' },
-  { image: 'https://images.unsplash.com/photo-1621800043295-a73fe2f76e2c?q=80&w=800&auto=format&fit=crop', cat: 'CheeseSteaks', name: 'Flaming Hot', desc: 'Spicy steak, American cheese, jalapeños, and ghost pepper sauce.', price: '$14.99', badge: 'Hot' },
-  { image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop', cat: 'Burgers', name: 'Triple Smash', desc: 'Three beef patties, triple cheese, and our signature secret sauce.', price: '$15.99', badge: 'Best Seller' },
-  { image: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=800&auto=format&fit=crop', cat: 'Sides', name: 'Loaded Fries', desc: 'Crispy fries topped with steak, cheese, and grilled onions.', price: '$8.99', badge: 'New' },
+  { image: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=800&auto=format&fit=crop', cat: 'CheeseSteaks', name: 'SIGNATURE', desc: 'SEASONED JUICY STEAK, SWISS/AMERICAN CHEESE, GRILLED ONIONS, BELL PEPPERS, MUSHROOM & MAYO', price: '$11.99', badge: 'HOUSE SPECIAL' },
+  { image: 'https://images.unsplash.com/photo-1621800043295-a73fe2f76e2c?q=80&w=800&auto=format&fit=crop', cat: 'CheeseSteaks', name: 'FLAMING HOT', desc: 'SEASONED SPICY STEAK, AMERICAN CHEESE, GRILLED JALAPENOS, CHEETO DUST, HOT SAUCE', price: '$11.99', badge: 'EXTRA HOT' },
+  { image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop', cat: 'Sandwiches', name: 'OG ZINGER', desc: 'FRESHLY HAND BATTERED CHICKEN BREAST TOPPED WITH OUR MAGICAL HOUSE SAUCE, HOT N SWEET SAUCE, COLESLAW & CHEESE', price: '$9.99', badge: 'BEST SELLER' },
+  { image: 'https://images.unsplash.com/photo-1619177383921-9e79f64817a1?q=80&w=800&auto=format&fit=crop', cat: 'Burgers', name: 'TEXAS BURGER', desc: 'SEASONED BEEF PATTY, AMERICAN CHEESE TOPPED WITH SIGNATURE PHILLY CHEESE STEAK', price: '$12.99', badge: 'TEXAS STYLE' },
 ];
 
 export default function FeaturedSlider() {
@@ -122,7 +124,7 @@ export default function FeaturedSlider() {
                 
                 <div className="p-10 flex flex-col flex-grow bg-gradient-to-b from-brand-dark to-brand-dark2">
                   <span className="font-oswald text-xs font-bold uppercase tracking-[0.3em] text-brand-gold mb-3">{slide.cat}</span>
-                  <h3 className="font-greatvibes text-4xl text-white mb-4 transition-colors group-hover:text-brand-red">
+                  <h3 className="font-architects text-4xl text-white mb-4 transition-colors group-hover:text-brand-red">
                     {slide.name}
                   </h3>
                   <p className="font-inter text-base text-white/40 leading-relaxed mb-6 flex-grow line-clamp-3">
@@ -130,7 +132,12 @@ export default function FeaturedSlider() {
                   </p>
                   <div className="mt-auto flex items-center justify-between pt-6 border-t border-white/5">
                     <span className="font-oswald text-4xl font-black text-white group-hover:text-brand-gold transition-colors">{slide.price}</span>
-                    <button className="bg-brand-red hover:bg-white hover:text-brand-dark text-white px-8 py-4 rounded-2xl text-xs font-black uppercase tracking-widest transition-all shadow-xl active:scale-95">ORDER NOW</button>
+                    <button 
+                      onClick={() => window.dispatchEvent(new CustomEvent('OPEN_ORDER_MODAL', { detail: { itemName: slide.name } }))}
+                      className="bg-brand-red hover:bg-white hover:text-brand-dark text-white px-8 py-4 rounded-2xl text-xs font-black uppercase tracking-widest transition-all shadow-xl active:scale-95"
+                    >
+                      ORDER NOW
+                    </button>
                   </div>
                 </div>
               </motion.div>
